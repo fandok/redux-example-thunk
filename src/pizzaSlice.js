@@ -15,9 +15,14 @@ export const pizzaSlice = createSlice({
     addToppings: (state, action) => {
       state.toppings = [...state.toppings, action.payload];
     },
+    deleteToppings: (state, action) => {
+      state.toppings = [
+        ...state.toppings.filter((topping) => topping !== action.payload),
+      ];
+    },
   },
 });
 
-export const { toggleGluten, addToppings } = pizzaSlice.actions;
+export const { toggleGluten, addToppings, deleteToppings } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

@@ -4,10 +4,8 @@ const initialState = {
   carList: [],
 };
 
-export const getCars = createAsyncThunk("car/getCars", async () => {
-  const response = await fetch(
-    "https://api-car-rental.binaracademy.org/customer/v2/car"
-  );
+export const getCars = createAsyncThunk("car/getCars", async (url) => {
+  const response = await fetch(url);
   const data = await response.json();
   return data.cars;
 });

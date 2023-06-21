@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToppings } from "./pizzaSlice";
+import { addToppings, deleteToppings } from "./pizzaSlice";
 import { useEffect } from "react";
 import { getCars } from "./carSlice";
 
@@ -9,7 +9,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCars());
+    dispatch(
+      getCars("https://api-car-rental.binaracademy.org/customer/v2/car")
+    );
   }, [dispatch]);
 
   return (
@@ -28,6 +30,13 @@ const App = () => {
         }}
       >
         add tomato
+      </button>
+      <button
+        onClick={() => {
+          dispatch(deleteToppings("tomato"));
+        }}
+      >
+        delete tomato
       </button>
     </>
   );
